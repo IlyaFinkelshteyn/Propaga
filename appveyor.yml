@@ -1,4 +1,4 @@
-image: Previous Visual Studio 2017
+image: Visual Studio 2017
 clone_folder: c:\projects\Propaga
 configuration: Release
 
@@ -14,7 +14,7 @@ init:
   - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 install:
-  - if [%COMPILER%]==[vs] cinst cmake --version 3.8.2
+  - if [%COMPILER%]==[vs] cinst cmake
   - if [%COMPILER%]==[vs] SET "PATH=C:\Program Files\CMake\bin;%PATH%"
   - if [%COMPILER%]==[vs] call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x86
   - if [%COMPILER%]==[cygwin] SET "PATH=C:\cygwin64\bin;C:\cygwin64\usr\bin;%PATH%"
@@ -31,7 +31,8 @@ install:
   - cd ..
   - git clone https://github.com/Microsoft/vcpkg
   - cd vcpkg
-  - if [%COMPILER%]==[vs] powershell -exec bypass scripts\bootstrap.ps1
+  #- if [%COMPILER%]==[vs] powershell -exec bypass scripts\bootstrap.ps1
+  - if [%COMPILER%]==[vs] bootstrap-vcpkg.bat
   - if [%COMPILER%]==[vs] vcpkg integrate install
   - if [%COMPILER%]==[vs] vcpkg install msmpi
   - cd ..
