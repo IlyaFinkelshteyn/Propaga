@@ -10,6 +10,9 @@ environment:
     - platform: Win32
       COMPILER: vs
 
+init:
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
 install:
   - if [%COMPILER%]==[vs] cinst cmake --version 3.8.2
   - if [%COMPILER%]==[vs] SET "PATH=C:\Program Files\CMake\bin;%PATH%"
