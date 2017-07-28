@@ -1,4 +1,4 @@
-image: Previous Visual Studio 2017
+image: Visual Studio 2017
 clone_folder: c:\projects\Propaga
 configuration: Release
 
@@ -11,7 +11,7 @@ environment:
       COMPILER: vs
 
 install:
-  - if [%COMPILER%]==[vs] cinst cmake
+  #- if [%COMPILER%]==[vs] cinst cmake
   - if [%COMPILER%]==[vs] SET "PATH=C:\Program Files\CMake\bin;%PATH%"
   - if [%COMPILER%]==[vs] call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x86
   - if [%COMPILER%]==[cygwin] SET "PATH=C:\cygwin64\bin;C:\cygwin64\usr\bin;%PATH%"
